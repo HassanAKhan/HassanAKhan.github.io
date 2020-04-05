@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styles.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="title">{{title}}</div>
+        <div class="top-panel">
+            <div class="left-side">
+                <div class="rendering-area">
+                    <span class="svg-body"></span>
+                    <div class="instruct-text" id="instruct-text">
+                        <h5>Please select a file and press load!</h5>
+                    </div>
+                </div>
+                <div class="actions" method='POST'>
+                    <div class="searcharea">
+                        <input type="text" placeholder="Search..." class="search">
+                        <button type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="right-side">
+                <h4>Filters</h4>
+                <div class="date">
+                    <label for="daterange">Choose a datereange!</label>
+                    <input name="daterange" id="daterange" class="date-picker" />
+                </div>
+                <div class="type-toggle">
+                    <label for="toggles">Toggle types!</label>
+                    <div class="toggles">
+                        <div class="org-toggle active-toggle" onclick="toggleOrg()" id="org-toggle">Organization</div>
+                        <div class="loc-toggle active-toggle" onclick="toggleLoc()" id="loc-toggle">Location</div>
+                        <div class="per-toggle active-toggle" onclick="togglePer()" id="per-toggle">Person</div>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <label for="toggles">Select action!</label>
+                    <div class="actions-btns">
+                        <button id="filterData">Submit Filters</button>
+                        <button id="selectFile">Select File</button>
+                        <button id="load-button">Load</button>
+                        <button id="render">Render</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="bottom-panel">
+            <label class="metrics-head">Metrics</label>
+            <div class="metrics">
+
+                <div class="table-container">
+                    <div class="col-heads">
+                        <span class="">Type</span>
+                        <span class="">Occurences</span>
+                    </div>
+                    <div class="spacer"></div>
+                    <div class="col-org">
+                        <span class="">{{ entity_types[0] }}</span>
+                        <span class="">{{occ_count[entity_types[0]]}}</span>
+                    </div>
+                    <div class="col-loc">
+                        <span class="">{{ entity_types[1] }}</span>
+                        <span class="">{{occ_count[entity_types[1]]}}</span>
+                    </div>
+                    <div class="col-person">
+                        <span class="">{{ entity_types[2] }}</span>
+                        <span class="">{{occ_count[entity_types[2]]}}</span>
+                    </div>
+                </div>
+                <div class="hor-spacer"></div>
+                <div class="tot-records">
+                    <span class="">
+                        Total records: {{total_records}}
+                    </span>
+                </div>
+            </div>
+            <div class="spread">
+                <label class="spread-head">Spread</label>
+                <div class="spread-table">
+                    <div class="table-container">
+                        <div class="col-entity">
+                            <span class="highlighted-head">Entity type(s)</span>
+                            <span class="">Oragnisation & Location & Person</span>
+                            <span class="">Oragnisation & Location</span>
+                            <span class="">Oragnisation & Person</span>
+                            <span class="">Location & Person</span>
+                            <span class="">Oragnisation</span>
+                            <span class="">Location</span>
+                            <span class="">Person</span>
+                        </div>
+                        <div class="col-records">
+                            <span class="highlighted-head">Records</span>
+                            <span class="">{{pop[0]['OLP']}}</span>
+                            <span class="">{{pop[1]['OL']}}</span>
+                            <span class="">{{pop[2]['OP']}}</span>
+                            <span class="">{{pop[3]['LP']}}</span>
+                            <span class="">{{pop[4]['O']}}</span>
+                            <span class="">{{pop[5]['L']}}</span>
+                            <span class="">{{pop[6]['P']}}</span>
+                        </div>
+                        <div class="col-perc">
+                            <span class="highlighted-head">Percentage of file</span>
+                            <span class="">{{pop[0]['percentage']}}</span>
+                            <span class="">{{pop[1]['percentage']}}</span>
+                            <span class="">{{pop[2]['percentage']}}</span>
+                            <span class="">{{pop[3]['percentage']}}</span>
+                            <span class="">{{pop[4]['percentage']}}</span>
+                            <span class="">{{pop[5]['percentage']}}</span>
+                            <span class="">{{pop[6]['percentage']}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- scripts -->
+    <div id="mydiv" f_data='{{ render_data }}'></div>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+        var startDate = '';
+        var endDate = '';
+        $(function() {
+            $('input[name="daterange"]').daterangepicker({
+                opens: 'left'
+            }, function(start, end, label) {
+                startDate = start.format('YYYY-MM-DD');
+                endDate = end.format('YYYY-MM-DD');
+                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            });
+        });
+        var isOrgActive = true;
+        var isLocActive = true;
+        var isPerActive = true;
+
+        // toggles
+        function toggleOrg() {
+            var btn = document.getElementById('org-toggle');
+            if (isOrgActive) {
+                btn.classList.remove('active-toggle');
+            } else {
+                btn.classList.add('active-toggle')
+            }
+            isOrgActive = !isOrgActive;
+        }
+
+        function toggleLoc() {
+            var btn = document.getElementById('loc-toggle');
+            if (isLocActive) {
+                btn.classList.remove('active-toggle');
+            } else {
+                btn.classList.add('active-toggle')
+            }
+            isLocActive = !isLocActive;
+        }
+
+        function togglePer() {
+            var btn = document.getElementById('per-toggle');
+            if (isPerActive) {
+                btn.classList.remove('active-toggle');
+            } else {
+                btn.classList.add('active-toggle')
+            }
+            isPerActive = !isPerActive;
+        }
+
+        // handle reloaded toggle
+        var el = document.getElementById
+    </script>
+</body>
+
+</html>

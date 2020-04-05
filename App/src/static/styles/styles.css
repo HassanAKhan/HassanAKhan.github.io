@@ -1,0 +1,359 @@
+.main-container,
+body {
+    overflow: hidden;
+    background: #1F1F1F;
+    width: 100vw;
+    height: 100vh;
+}
+
+label {
+    font-weight: 100;
+}
+
+.main-container .title {
+    height: 10vh;
+    width: 100%;
+    background: #1F1F1F;
+    color: #6DDDF1;
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container .top-panel {
+    height: 56vh;
+    margin-bottom: 1rem;
+    width: 100%;
+    background: #1F1F1F;
+    color: #6DDDF1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-container .top-panel .left-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.main-container .top-panel .right-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30%;
+    padding: 0 1rem;
+}
+
+.main-container .top-panel .right-side .date {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container .top-panel .right-side .type-toggle {
+    width: 90%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.main-container .top-panel .right-side .type-toggle .toggles {
+    display: flex;
+    justify-content: space-around;
+}
+
+.main-container .top-panel .right-side .type-toggle .toggles .active-toggle {
+    color: #000000;
+    background-color: #6DDDF1;
+    opacity: 1;
+    transition: opacity .1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.main-container .top-panel .right-side .type-toggle .toggles div {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    font-size: small;
+    opacity: 0.6;
+}
+
+.main-container .top-panel .right-side .date input {
+    width: 100%;
+    background: #1F1F1F;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 1rem;
+    padding: .6rem;
+    text-align: center;
+}
+
+.main-container .top-panel .right-side .action-buttons .actions-btns {
+    flex-grow: 1;
+    width: 100%;
+    ;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.main-container .top-panel .right-side .action-buttons {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: start;
+    width: 90%;
+}
+
+.main-container .top-panel .right-side .date input:focus {
+    outline: none;
+}
+
+.main-container .top-panel .right-side .action-buttons button {
+    width: 100%;
+    border: 1px solid #fff;
+    border-radius: 2rem;
+    color: #fff;
+    background-color: #1F1F1F;
+}
+
+.main-container .top-panel .rendering-area .instruct-text {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container .top-panel .rendering-area {
+    height: 80%;
+    width: 100%;
+    flex-grow: 1;
+}
+
+
+/* ACTIONS */
+
+.main-container .top-panel .actions {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-container .top-panel .actions .searcharea {
+    display: flex;
+    flex-grow: 1;
+    margin: 0;
+    border-bottom: 1px solid white;
+}
+
+.main-container .top-panel .actions .searcharea button {
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: 1.4rem;
+}
+
+.searcharea .search-bar-line {
+    width: 90%;
+    height: 1px;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+71,7db9e8+100&1+71,0+100 */
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 71%, rgba(125, 185, 232, 0) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 71%, rgba(125, 185, 232, 0) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 71%, rgba(125, 185, 232, 0) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.main-container .top-panel .actions .right-buttons button {
+    padding: 0.2rem 0.7rem;
+}
+
+.main-container .top-panel .actions input {
+    width: 100%;
+    background-color: #1F1F1F;
+    border: none;
+    color: #fff;
+    padding: 0.2rem 0;
+    margin-left: .5rem;
+    ;
+}
+
+.main-container .top-panel .actions input:focus {
+    outline: none;
+}
+
+.main-container .bottom-panel {
+    display: flex;
+    width: 100%;
+    height: 30vh;
+    background: #1F1F1F;
+    color: #ffffff;
+}
+
+.main-container .bottom-panel .metrics,
+.main-container .bottom-panel .spread {
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+
+.main-container .bottom-panel .metrics-head {
+    position: fixed;
+    bottom: -2rem;
+    /* left: -3rem; */
+    color: #6DDDF1;
+    /* transform: rotate(90deg); */
+    font-size: 8rem;
+    letter-spacing: .6rem;
+    opacity: 0.1;
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
+}
+
+.main-container .bottom-panel .spread .spread-table {
+    margin: 0;
+    padding: .5rem;
+    width: 100%;
+    height: 100%;
+}
+
+.main-container .bottom-panel .spread .spread-table .table-container {
+    display: flex;
+    width: 100%;
+    height: 90%;
+    font-weight: 200;
+    justify-content: space-around;
+}
+
+.main-container .bottom-panel .spread .spread-table .table-container .col-entity,
+.main-container .bottom-panel .spread .spread-table .table-container .col-records,
+.main-container .bottom-panel .spread .spread-table .table-container .col-perc {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    font-size: smaller;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.main-container .bottom-panel .spread .spread-table .table-container .col-entity {
+    text-align: right;
+}
+
+.main-container .bottom-panel .spread .spread-head {
+    position: fixed;
+    bottom: -2rem;
+    right: 0;
+    color: #6DDDF1;
+    font-size: 8rem;
+    letter-spacing: .6rem;
+    opacity: 0.1;
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
+}
+
+.main-container .bottom-panel .metrics {
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+}
+
+.main-container .bottom-panel .metrics .table-container {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    font-weight: 200;
+    justify-content: space-around;
+}
+
+.main-container .bottom-panel .metrics .table-container .col-heads,
+.main-container .bottom-panel .metrics .table-container .col-org,
+.main-container .bottom-panel .metrics .table-container .col-loc,
+.main-container .bottom-panel .metrics .table-container .col-person,
+.main-container .bottom-panel .metrics .tot-records div {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-around;
+}
+
+.main-container .bottom-panel .metrics .table-container span,
+.main-container .bottom-panel .metrics .tot-records span {
+    width: 100%;
+}
+
+.main-container .bottom-panel .metrics .table-container .spacer,
+.main-container .bottom-panel .metrics .tot-records .spacer {
+    height: 100%;
+    border-right: 1px solid #6DDDF1;
+}
+
+.main-container .bottom-panel .metrics .hor-spacer {
+    height: 1px;
+    width: 100%;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(109, 221, 241, 1) 34%);
+}
+
+.main-container .bottom-panel .metrics .tot-records {
+    display: flex;
+    justify-content: end;
+    text-align: right;
+    padding-top: .5rem;
+    width: 100%;
+    height: 20%;
+}
+
+.main-container .bottom-panel .metrics .tot-records div {
+    flex-grow: 1;
+}
+
+.main-container .bottom-panel .metrics .tot-records .spacer {
+    width: 0;
+    flex-grow: 0;
+    ;
+}
+
+.main-container .bottom-panel .metrics .table-container .col-heads,
+.main-container .bottom-panel .metrics .tot-records .col-heads {
+    min-width: 20%;
+    font-size: 1.2rem;
+    font-weight: 300;
+    text-align: center;
+    color: #6DDDF1;
+    /* color: #FFFFFF; */
+}
+
+.main-container .bottom-panel .metrics label {
+    font-size: large;
+    height: 10%;
+}
+
+.highlighted-head {
+    font-size: 1.2rem;
+    font-weight: 300;
+    text-align: center;
+    color: #6DDDF1;
+}
