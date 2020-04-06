@@ -234,7 +234,7 @@ def searchFilter (data , filename):
     for line in open(filename, 'r'):
         loaded = json.loads(line)
 
-        if loaded['resource']['id'] == data :
+        if loaded['resource']['id'] == data[1] :
             file_data.append(loaded)
             return file_data
         else:
@@ -328,6 +328,28 @@ def pythonImplemntation(data):
     #fig = draw(er(50,3*[0.9]), show=True)
     #print( webplot(mnet,struct ,outputfile=None, mult_layer=True))
 
+if __name__=='__main__':
+    app.run()
 
 
 
+# LICENSE INFORMATION
+# ===================
+# EasyGui version |version|
+#
+# Copyright (c) 2015, Easygui developers and Stephen Raymond Ferg
+#
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without modification,
+# are permitted provided that the following conditions are met:
+#
+# 1. Redistributions of source code must retain the above copyright notice,
+# this list of conditions and the following disclaimer.
+#
+# 2. Redistributions in binary form must reproduce the above copyright notice,
+# this list of conditions and the following disclaimer in the documentation and/or
+# other materials provided with the distribution.
+#
+# 3. The name of the author may not be used to endorse or promote products derived
+# from this software without specific prior written permission.

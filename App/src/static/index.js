@@ -152,6 +152,25 @@ $(document).ready(function() {
         });
     });
 
+    $("#submit").click(function(e) {
+        $('#instruct-text').hide();
+        d3.select(".svg-body").selectAll("*").remove();
+        e.preventDefault();
+        var s = document.getElementById("search").value;
+        console.log(s);
+        $.ajax({
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            url: `${window.origin}/`,
+            traditional: "true",
+            data: JSON.stringify(['search', s]),
+            dataType: "json",
+            success: function(response) {
+                render(response);
+            }
+        });
+    });
+
 
     $("#load-button").click(function(e) {
         e.preventDefault();
